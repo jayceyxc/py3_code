@@ -11,7 +11,7 @@
         "console": "integratedTerminal",
         "cwd": "${workspaceRoot}",
         "env": {
-            "PYTHON_PATH": "/Users/yuxuecheng/Learn/Source/Py3Example"
+            "PYTHON_PATH": "/Users/yuxuecheng/Learn/Source/py3_code"
         }
     }]
 }
