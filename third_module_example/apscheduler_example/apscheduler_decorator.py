@@ -17,7 +17,8 @@ import codecs
 from apscheduler.schedulers.blocking import BlockingScheduler
 from apscheduler.schedulers.background import BackgroundScheduler
 
-sc = BlockingScheduler()
+# 此处如果使用BlockingScheduler，文件不会有内容，因为前台被调度器占用了
+sc = BackgroundScheduler()
 
 # 每天凌晨1点30分50秒执行
 # @sc.scheduled_job('cron', day_of_week='*', hour=1, minute='30', second='50')
@@ -30,15 +31,26 @@ def main():
     with codecs.open('1.txt', mode='a', encoding='UTF-8') as f:
         try:
             sc.start()
-            time.sleep(30)
             print('定时任务成功执行')
             f.write('定时任务成功执行')
-            sc.shutdown()
+            # sleep 30秒，让定时任务多打印几次
+            time.sleep(30)
+            '''
+            输入内容如下：
+            定时任务成功执行
+            aaa
+            aaa
+            aaa
+            aaa
+            aaa
+            aaa
+            '''
         except Exception as e:
             sc.shutdown()
             print('定时任务执行失败')
             f.write('定时任务执行失败')
         finally:
+            sc.shutdown()
             f.close()
 
 
