@@ -12,3 +12,7 @@ import os
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 print(base_dir)
+data_dir = os.path.join(base_dir, 'data')
+output_dir = os.path.join(base_dir, 'output')
+picture_dir = os.path.join(output_dir, 'picture')
+

@@ -475,3 +475,5 @@ logs
 *.pyc
 *.tar.gz
 *.txt
+output
+data
